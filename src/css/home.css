@@ -1,0 +1,11 @@
+.home-content {
+  margin-top: 25px;
+}
+.loading {
+  text-align: center;
+  margin-top: 40px;
+}
+.characters-container {
+  display: flex;
+  flex-wrap: wrap;
+}
