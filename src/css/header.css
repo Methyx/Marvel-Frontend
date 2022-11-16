@@ -1,0 +1,28 @@
+.top {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.top img {
+  height: 100px;
+}
+.bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+}
+.bottom .menu {
+  color: rgb(188, 188, 188);
+  font-size: 18px;
+  padding: 5px;
+}
+.bottom .menu:hover {
+  color: white;
+  border-bottom: solid 1px var(--marvel-red);
+}
+.bottom .here {
+  border: 1px solid var(--marvel-red);
+  border-radius: 3px;
+}
