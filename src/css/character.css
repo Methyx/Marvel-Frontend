@@ -5,12 +5,12 @@
   border-radius: 10px;
   margin: 5px;
   padding: 5px;
-  box-shadow: 2px 2px 5px lightgrey;
+  box-shadow: 3px 3px 6px lightgrey;
 }
 
 .character:hover {
   cursor: pointer;
-  box-shadow: 2px 2px 5px var(--marvel-red);
+  box-shadow: 3px 3px 6px var(--marvel-red);
   border: 1px solid var(--marvel-red);
 }
 

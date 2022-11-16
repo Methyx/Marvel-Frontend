@@ -1,5 +1,5 @@
 .home-content {
-  margin-top: 25px;
+  margin-top: 10px;
 }
 .loading {
   text-align: center;
@@ -15,7 +15,21 @@
   margin-right: 400px;
   /* flex: auto; */
 }
+.search {
+  display: flex;
+  justify-content: center;
+}
+.search input {
+  width: 80%;
+  height: 30px;
+  margin: 20px 0;
+  padding-left: 20px;
+  font-size: 18px;
+}
 
+/* ---------- */
+/* RESPONSIVE */
+/* ---------- */
 @media (max-width: 400px) {
   .characters-container {
     justify-content: center;
