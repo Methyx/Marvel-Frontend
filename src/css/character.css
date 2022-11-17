@@ -33,11 +33,16 @@
   background-color: rgb(235, 235, 235);
   border-radius: 5px;
   overflow-y: scroll;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.character .description-container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 .character .description {
   margin-top: 3px;
   padding: 10px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 300;
   color: black;
 }

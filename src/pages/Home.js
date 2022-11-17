@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 import "../css/home.css";
 
 // Components
 import Character from "../components/Character";
+
+// functions
+import useDebounce from "../functions/useDebounce";
+import fetchDataCharacters from "../functions/fetchDataCharacters";
 
 const Home = () => {
   // STATES
@@ -14,54 +17,20 @@ const Home = () => {
   const [searchCharacter, setSearchCharacter] = useState("");
   const [page, setPage] = useState(1);
 
-  // functions
-  const useDebounce = (value, delay) => {
-    const [debouncedValue, setDebouncedValue] = useState(value);
-    useEffect(() => {
-      const handler = setTimeout(() => {
-        setDebouncedValue(value);
-        setPage(1);
-      }, delay);
-      return () => {
-        clearTimeout(handler);
-      };
-    }, [value, delay]);
-    return debouncedValue;
-  };
-
   // Init
-  const debounceSearchCharacter = useDebounce(searchCharacter, 500);
+  const debounceSearchCharacter = useDebounce(searchCharacter, 500, setPage);
   // UseEffect
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      const urlBack =
-        "https://site--marvel-backend--gw6mlgwnmzwz.code.run/characters";
-      let url = urlBack;
-      try {
-        if (nbPerPage) {
-          url += "?limit=" + nbPerPage;
-        } else {
-          url += "?limit=100";
-        }
-        if (page > 1) {
-          url += "&skip=" + Math.round((page - 1) * nbPerPage);
-        }
-        if (debounceSearchCharacter) {
-          url += "&name=" + debounceSearchCharacter;
-        }
-        // console.log(url);
-        const response = await axios.get(url);
-        setData(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchData();
+    fetchDataCharacters(
+      nbPerPage,
+      page,
+      debounceSearchCharacter,
+      setIsLoading,
+      setData
+    );
   }, [debounceSearchCharacter, nbPerPage, page]);
 
-  useEffect(() => {}, [searchCharacter]);
+  // useEffect(() => {}, [searchCharacter]);
 
   return (
     <div className="container home-content">

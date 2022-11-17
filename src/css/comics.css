@@ -1,32 +1,32 @@
-.home-content {
+.comics-content {
   margin-top: 10px;
 }
-.home-content .loading {
+.comics-content .loading {
   text-align: center;
   margin-top: 40px;
 }
-.characters-container {
+.comics-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.characters-container::after {
+.comics-container::after {
   content: "";
   margin-right: 400px;
   /* flex: auto; */
 }
-.home-content .search {
+.comics-content .search {
   display: flex;
   justify-content: center;
 }
-.home-content .search input {
+.comics-content .search input {
   width: 80%;
   height: 30px;
   margin: 20px 0;
   padding-left: 20px;
   font-size: 18px;
 }
-.home .handle-page-top {
+.comics .handle-page-top {
   display: flex;
   height: 30px;
   align-items: center;
@@ -35,21 +35,21 @@
   margin-bottom: 10px;
   color: lightgrey;
 }
-.home .handle-page-top input {
+.comics .handle-page-top input {
   width: 50px;
 }
-.home .handle-page-bottom {
+.comics .handle-page-bottom {
   height: 50px;
   padding: 20px;
   text-align: right;
 }
-.home .handle-page-bottom button {
+.comics .handle-page-bottom button {
   margin: 0 10px;
   font-size: 20px;
   border-radius: 50%;
   border: 2px solid white;
 }
-.home .handle-page-bottom button:hover {
+.comics .handle-page-bottom button:hover {
   cursor: pointer;
   background-color: black;
   color: white;
@@ -59,13 +59,13 @@
 /* RESPONSIVE */
 /* ---------- */
 @media (max-width: 598px) {
-  .characters-container {
+  .comics-container {
     justify-content: center;
   }
-  .home .handle-page-top {
+  .comics .handle-page-top {
     display: block;
   }
-  .home .handle-page-top div {
+  .comics .handle-page-top div {
     text-align: right;
   }
 }
