@@ -1,5 +1,5 @@
 .character {
-  width: 200px;
+  width: 250px;
   height: 440px;
   border: 1px solid lightgray;
   border-radius: 10px;
@@ -32,6 +32,7 @@
   width: 100%;
   background-color: rgb(235, 235, 235);
   border-radius: 5px;
+  overflow-y: scroll;
 }
 .character .description {
   margin-top: 3px;
