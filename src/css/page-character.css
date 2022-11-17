@@ -1,0 +1,54 @@
+.page-character .rappel-character {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+}
+.rappel-character img {
+  width: 35%;
+  height: 400px;
+  object-fit: contain;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.rappel-character h1 {
+  width: 30%;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+.rappel-character p {
+  width: 35%;
+}
+.page-character h2 {
+  line-height: 40px;
+  border-top: 2px solid var(--marvel-red);
+  border-bottom: 2px solid var(--marvel-red);
+}
+.page-character .comics-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* ---------- */
+/* RESPONSIVE */
+/* ---------- */
+@media (max-width: 598px) {
+  .page-character .rappel-character {
+    flex-direction: column;
+  }
+  .rappel-character img {
+    width: 100%;
+  }
+  .rappel-character h1 {
+    width: 100%;
+  }
+  .rappel-character p {
+    width: 100%;
+  }
+  .page-character h2 {
+    font-size: 14px;
+  }
+  .page-character .comics-list {
+    justify-content: center;
+  }
+}

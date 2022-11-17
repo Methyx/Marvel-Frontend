@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 import "../css/home.css";
 
@@ -12,13 +13,18 @@ import fetchDataCharacters from "../functions/fetchDataCharacters";
 const Home = () => {
   // STATES
   const [isLoading, setIsLoading] = useState(true);
-  const [nbPerPage, setNbPerPage] = useState(100);
+  const [nbPerPage, setNbPerPage] = useState(
+    Cookies.get("Marvel-nbPerPage") || 100
+  );
   const [data, setData] = useState(null);
-  const [searchCharacter, setSearchCharacter] = useState("");
-  const [page, setPage] = useState(1);
+  const [searchCharacter, setSearchCharacter] = useState(
+    Cookies.get("Marvel-search") || ""
+  );
+  const [page, setPage] = useState(Cookies.get("Marvel-page") || 1);
 
   // Init
   const debounceSearchCharacter = useDebounce(searchCharacter, 500, setPage);
+
   // UseEffect
   useEffect(() => {
     fetchDataCharacters(
@@ -29,8 +35,6 @@ const Home = () => {
       setData
     );
   }, [debounceSearchCharacter, nbPerPage, page]);
-
-  // useEffect(() => {}, [searchCharacter]);
 
   return (
     <div className="container home-content">
@@ -47,6 +51,16 @@ const Home = () => {
                 setSearchCharacter(event.target.value);
               }}
             />
+            <button
+              onClick={() => {
+                Cookies.remove("Marvel-page");
+                Cookies.remove("Marvel-search");
+                setPage(1);
+                setSearchCharacter("");
+              }}
+            >
+              Reset
+            </button>
           </div>
 
           <div className="home">
@@ -60,10 +74,13 @@ const Home = () => {
                   onChange={(event) => {
                     if (event.target.value <= 0) {
                       setNbPerPage(0);
+                      Cookies.set("Marvel-nbPerPage", "0");
                     } else if (event.target.value >= 100) {
                       setNbPerPage(100);
+                      Cookies.set("Marvel-nbPerPage", "100");
                     } else {
                       setNbPerPage(event.target.value);
+                      Cookies.set("Marvel-nbPerPage", event.target.value);
                     }
                   }}
                 />
@@ -75,15 +92,21 @@ const Home = () => {
               })}
             </section>
             <section className="handle-page-bottom">
-              {page > 1 && (
-                <button onClick={() => setPage(page - 1)}> - </button>
-              )}
-              <span>
-                Page : {page} / {Math.ceil(data.count / nbPerPage)}
-              </span>
-              {page < Math.ceil(data.count / nbPerPage) && (
-                <button onClick={() => setPage(page + 1)}>+</button>
-              )}
+              <span>Page : </span>
+              <input
+                type="number"
+                value={page}
+                onChange={(event) => {
+                  if (
+                    event.target.value >= 1 &&
+                    event.target.value <= Math.ceil(data.count / nbPerPage)
+                  ) {
+                    Cookies.set("Marvel-page", event.target.value);
+                    setPage(event.target.value);
+                  }
+                }}
+              />
+              <span> / {Math.ceil(data.count / nbPerPage)}</span>
             </section>
           </div>
         </>

@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Comics from "./pages/Comics";
 import Favoris from "./pages/Favoris";
-import Character from "./pages/Character";
+import PageCharacter from "./pages/PageCharacter";
 
 // components
 import Header from "./components/Header";
@@ -18,7 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/comics" element={<Comics />} />
         <Route path="/favoris" element={<Favoris />} />
-        <Route path="/character" element={<Character />} />
+        <Route path="/character/:id" element={<PageCharacter />} />
       </Routes>
     </Router>
   );

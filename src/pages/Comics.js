@@ -31,8 +31,6 @@ const Comics = () => {
     );
   }, [debounceSearchComic, nbPerPage, page]);
 
-  // useEffect(() => {}, [searchComic]);
-
   return (
     <div className="container comics-content">
       {isLoading ? (
@@ -48,6 +46,14 @@ const Comics = () => {
                 setSearchComic(event.target.value);
               }}
             />
+            <button
+              onClick={() => {
+                setPage(1);
+                setSearchComic("");
+              }}
+            >
+              Reset
+            </button>
           </div>
 
           <div className="comics">
@@ -76,15 +82,20 @@ const Comics = () => {
               })}
             </section>
             <section className="handle-page-bottom">
-              {page > 1 && (
-                <button onClick={() => setPage(page - 1)}> - </button>
-              )}
-              <span>
-                Page : {page} / {Math.ceil(data.count / nbPerPage)}
-              </span>
-              {page < Math.ceil(data.count / nbPerPage) && (
-                <button onClick={() => setPage(page + 1)}>+</button>
-              )}
+              <span>Page : </span>
+              <input
+                type="number"
+                value={page}
+                onChange={(event) => {
+                  if (
+                    event.target.value >= 1 &&
+                    event.target.value <= Math.ceil(data.count / nbPerPage)
+                  ) {
+                    setPage(event.target.value);
+                  }
+                }}
+              />
+              <span> / {Math.ceil(data.count / nbPerPage)}</span>
             </section>
           </div>
         </>

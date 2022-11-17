@@ -1,8 +1,16 @@
+import { useNavigate } from "react-router-dom";
+
 import "../css/character.css";
 
 const Character = ({ character }) => {
+  const navigate = useNavigate();
   return (
-    <div className="character">
+    <div
+      className="character"
+      onClick={() => {
+        navigate(`/character/${character._id}`);
+      }}
+    >
       <img
         src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
         alt="personnage"
