@@ -10,6 +10,11 @@ import PageCharacter from "./pages/PageCharacter";
 // components
 import Header from "./components/Header";
 
+// icons
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+library.add(faHeart);
+
 function App() {
   return (
     <Router>

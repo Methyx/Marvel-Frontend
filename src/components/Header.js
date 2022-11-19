@@ -25,7 +25,7 @@ const Header = () => {
             className={location === "/favoris" ? "menu here" : "menu"}
             to="/favoris"
           >
-            Tes Favoris
+            Mes Favoris
           </Link>
         </section>
       </div>

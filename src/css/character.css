@@ -6,10 +6,28 @@
   margin: 5px;
   padding: 5px;
   box-shadow: 3px 3px 6px lightgrey;
+  position: relative;
 }
-
-.character:hover {
+.character .heart {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background-color: white;
+  padding: 7px;
+  border-radius: 50%;
+  border: 2px solid var(--marvel-red);
+}
+.character .heart:hover {
   cursor: pointer;
+}
+.color-gray {
+  color: gray;
+}
+.color-red {
+  color: var(--marvel-red);
+}
+.character:hover {
+  cursor: grab;
   box-shadow: 3px 3px 6px var(--marvel-red);
   border: 1px solid var(--marvel-red);
 }
