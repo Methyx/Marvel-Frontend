@@ -29,7 +29,7 @@ const PageCharacter = () => {
         <div className="page-character container">
           <button
             onClick={() => {
-              navigate("/");
+              navigate(-1);
             }}
           >
             Retour à la liste

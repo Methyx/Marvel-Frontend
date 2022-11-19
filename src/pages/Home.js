@@ -14,16 +14,21 @@ const Home = () => {
   // STATES
   const [isLoading, setIsLoading] = useState(true);
   const [nbPerPage, setNbPerPage] = useState(
-    Cookies.get("Marvel-nbPerPage") || 100
+    Cookies.get("Marvel-Home-nbPerPage") || 100
   );
   const [data, setData] = useState(null);
   const [searchCharacter, setSearchCharacter] = useState(
-    Cookies.get("Marvel-search") || ""
+    Cookies.get("Marvel-Home-search") || ""
   );
-  const [page, setPage] = useState(Cookies.get("Marvel-page") || 1);
+  const [page, setPage] = useState(Cookies.get("Marvel-Home-page") || 1);
 
   // Init
-  const debounceSearchCharacter = useDebounce(searchCharacter, 500, setPage);
+  const debounceSearchCharacter = useDebounce(
+    searchCharacter,
+    500,
+    setPage,
+    true
+  );
 
   // UseEffect
   useEffect(() => {
@@ -53,8 +58,8 @@ const Home = () => {
             />
             <button
               onClick={() => {
-                Cookies.remove("Marvel-page");
-                Cookies.remove("Marvel-search");
+                Cookies.remove("Marvel-Home-page");
+                Cookies.remove("Marvel-Home-search");
                 setPage(1);
                 setSearchCharacter("");
               }}
@@ -74,13 +79,13 @@ const Home = () => {
                   onChange={(event) => {
                     if (event.target.value <= 0) {
                       setNbPerPage(0);
-                      Cookies.set("Marvel-nbPerPage", "0");
+                      Cookies.set("Marvel-Home-nbPerPage", "0");
                     } else if (event.target.value >= 100) {
                       setNbPerPage(100);
-                      Cookies.set("Marvel-nbPerPage", "100");
+                      Cookies.set("Marvel-Home-nbPerPage", "100");
                     } else {
                       setNbPerPage(event.target.value);
-                      Cookies.set("Marvel-nbPerPage", event.target.value);
+                      Cookies.set("Marvel-Home-nbPerPage", event.target.value);
                     }
                   }}
                 />
@@ -101,7 +106,7 @@ const Home = () => {
                     event.target.value >= 1 &&
                     event.target.value <= Math.ceil(data.count / nbPerPage)
                   ) {
-                    Cookies.set("Marvel-page", event.target.value);
+                    Cookies.set("Marvel-Home-page", event.target.value);
                     setPage(event.target.value);
                   }
                 }}

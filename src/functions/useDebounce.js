@@ -1,20 +1,26 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
-const useDebounce = (value, delay, setPage) => {
+const useDebounce = (value, delay, setPage, isHomePage) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
   useEffect(() => {
+    let cookieName = "";
+    if (isHomePage) {
+      cookieName = "Marvel-Home-search";
+    } else {
+      cookieName = "Marvel-Favoris-search";
+    }
     const handler = setTimeout(() => {
-      if (Cookies.get("Marvel-search") !== value) {
+      if (Cookies.get(cookieName) !== value) {
         setDebouncedValue(value);
         setPage(1);
-        Cookies.set("Marvel-search", value);
+        Cookies.set(cookieName, value);
       }
     }, delay);
     return () => {
       clearTimeout(handler);
     };
-  }, [value, delay, setPage]);
+  }, [value, delay, setPage, isHomePage]);
   return debouncedValue;
 };
 

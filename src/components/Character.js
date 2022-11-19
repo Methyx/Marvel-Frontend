@@ -7,7 +7,7 @@ import "../css/character.css";
 import toggleFavorite from "../functions/toggleFavorite";
 import isFavorite from "../functions/isFavorite";
 
-const Character = ({ character }) => {
+const Character = ({ character, setReload }) => {
   const navigate = useNavigate();
   // STATES
   const [favorite, setFavorite] = useState(isFavorite(character._id));
@@ -29,6 +29,7 @@ const Character = ({ character }) => {
         onClick={(event) => {
           event.stopPropagation();
           toggleFavorite(character._id, setFavorite);
+          setReload(true);
         }}
       />
 
