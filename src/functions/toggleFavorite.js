@@ -15,7 +15,9 @@ const toggleFavorite = (id, setFavorite) => {
     tabFavorites.splice(index, 1);
     setFavorite(false);
   }
-  Cookies.set("marvel-favorites", JSON.stringify(tabFavorites));
+  Cookies.set("marvel-favorites", JSON.stringify(tabFavorites), {
+    expire: 150,
+  });
 };
 
 export default toggleFavorite;

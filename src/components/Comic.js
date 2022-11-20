@@ -1,4 +1,5 @@
 import "../css/comic.css";
+import decodeHTML from "../functions/decodeHTML";
 
 const Comic = ({ comic }) => {
   return (
@@ -9,7 +10,7 @@ const Comic = ({ comic }) => {
         alt="comic"
       />
       <div className="description-container">
-        <p className="description">{comic.description}</p>
+        <p className="description">{decodeHTML(comic.description)}</p>
       </div>
     </div>
   );

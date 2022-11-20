@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../css/character.css";
 import toggleFavorite from "../functions/toggleFavorite";
 import isFavorite from "../functions/isFavorite";
+import decodeHTML from "../functions/decodeHTML";
 
 const Character = ({ character, setReload }) => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Character = ({ character, setReload }) => {
 
       <p className="name"> {character.name}</p>
       <div className="description-container">
-        <p className="description">{character.description}</p>
+        <p className="description">{decodeHTML(character.description)}</p>
       </div>
     </div>
   );
