@@ -1,0 +1,47 @@
+.page-title {
+  font-size: 22px;
+  text-align: center;
+  margin: 15px 0;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.save-button {
+  height: 30px;
+  margin: 10px 0;
+  background-color: var(--marvel-red);
+  color: white;
+  border-radius: 10px;
+}
+
+.sort-favoris {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.mini-favori {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid white;
+  overflow: hidden;
+}
+
+.mini-favori img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  margin-bottom: 2px;
+}
+.margin-left {
+  margin-left: 150px;
+}
+.hidden {
+  visibility: hidden;
+}

@@ -15,10 +15,7 @@ const fetchDataFavoris = async (setIsLoading, setData) => {
   } catch (error) {
     console.log(error.message);
   }
-  setData({
-    count: tabFavoris.length,
-    results: data,
-  });
+  setData(data);
   setIsLoading(false);
 };
 export default fetchDataFavoris;

@@ -8,6 +8,7 @@ import Character from "../components/Character";
 
 // functions
 import fetchDataFavoris from "../functions/fetchDataFavoris";
+import { Link } from "react-router-dom";
 
 const Favoris = () => {
   // STATES
@@ -37,10 +38,11 @@ const Favoris = () => {
         <>
           <div className="home">
             <section className="handle-page-top">
-              <p>Personnages trouvés : {data.count}</p>
+              <p>Personnages trouvés : {data.length}</p>
+              <Link to="/favoris/class">Classe tes favoris</Link>
             </section>
             <section className="characters-container">
-              {data.results.map((item) => {
+              {data.map((item) => {
                 return (
                   <Character
                     key={item._id}

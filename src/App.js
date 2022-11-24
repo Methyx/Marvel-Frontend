@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Comics from "./pages/Comics";
 import Favoris from "./pages/Favoris";
 import PageCharacter from "./pages/PageCharacter";
+import SortFavoris from "./pages/SortFavoris";
 
 // components
 import Header from "./components/Header";
@@ -24,6 +25,7 @@ function App() {
         <Route path="/comics" element={<Comics />} />
         <Route path="/favoris" element={<Favoris />} />
         <Route path="/character/:id" element={<PageCharacter />} />
+        <Route path="/favoris/class" element={<SortFavoris />} />
       </Routes>
     </Router>
   );
