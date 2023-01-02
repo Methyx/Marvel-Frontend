@@ -7,7 +7,7 @@ import "../css/home.css";
 import Character from "../components/Character";
 
 // functions
-import fetchDataFavoris from "../functions/fetchDataFavoris";
+import loadFavoris from "../functions/loadFavoris";
 import { Link } from "react-router-dom";
 
 const Favoris = () => {
@@ -21,7 +21,7 @@ const Favoris = () => {
   // UseEffect
   useEffect(() => {
     if (Cookies.get("marvel-favorites")) {
-      fetchDataFavoris(setIsLoading, setData);
+      loadFavoris(setIsLoading, setData);
       setReload(false);
     }
   }, [reload]);

@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const fetchDataFavoris = async (setIsLoading, setData) => {
+const loadFavoris = async (setIsLoading, setData) => {
   setIsLoading(true);
   const tabFavoris = JSON.parse(Cookies.get("marvel-favorites"));
   const data = [];
@@ -18,4 +18,5 @@ const fetchDataFavoris = async (setIsLoading, setData) => {
   setData(data);
   setIsLoading(false);
 };
-export default fetchDataFavoris;
+
+export default loadFavoris;

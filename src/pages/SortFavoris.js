@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import Cookies from "js-cookie";
-import fetchDataFavoris from "../functions/fetchDataFavoris";
+import { useNavigate } from "react-router-dom";
+
+import loadFavoris from "../functions/loadFavoris";
+import saveFavoris from "../functions/saveFavoris";
 
 import "../css/sortFavoris.css";
 
@@ -16,7 +18,6 @@ const SortFavoris = () => {
 
   const dragStart = (e, position) => {
     dragItem.current = position;
-    // e.target.classList.add("titi");
     LeavingItem.current = e.target;
     console.log(LeavingItem.current);
     const newData = [...data];
@@ -40,7 +41,6 @@ const SortFavoris = () => {
 
   const drop = (e) => {
     LeavingItem.current.classList.remove("margin-left");
-    // e.target.classList.remove("titi");
     const copyData = [...data];
     copyData.pop();
     const dragItemContent = copyData[dragItem.current];
@@ -56,8 +56,10 @@ const SortFavoris = () => {
   };
 
   useEffect(() => {
-    fetchDataFavoris(setIsLoading, setData);
+    loadFavoris(setIsLoading, setData);
   }, []);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -71,7 +73,15 @@ const SortFavoris = () => {
             }
           </p>
           <div className="center">
-            <button className="save-button">Sauvegarder et retour</button>
+            <button
+              className="save-button"
+              onClick={() => {
+                saveFavoris(data);
+                navigate("/favoris");
+              }}
+            >
+              Sauvegarder et retour
+            </button>
           </div>
           <div className="sort-favoris container">
             {data.map((character, index) => {
