@@ -15,4 +15,4 @@ Technical :
 - JavaScript
 - React
 
-<img ref="./src/img/Marvel.gif">
+<img src="./src/img/Marvel.gif">
